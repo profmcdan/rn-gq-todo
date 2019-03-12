@@ -40,7 +40,7 @@ class Auth extends Component {
           client_id: auth0ClientId,
           response_type: "id_token",
           scope: "openid profile",
-          audience: "https://graphql-tutorials.auth0.com/api/v2/",
+          // audience: "https://mcdan-graphql.herokuapp.com/v1alpha1/graphql/",
           redirect_uri: redirectUrl,
           nonce: "randomstring"
         })

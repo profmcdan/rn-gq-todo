@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, AsyncStorage } from "react-native";
 import Main from "./src/app/Main";
+import Auth from "./src/auth/Auth";
 
 export default class App extends React.Component {
   state = {
@@ -31,6 +32,7 @@ export default class App extends React.Component {
         const obj = JSON.parse(session);
         if (obj.exp > Math.floor(new Date().getTime() / 1000)) {
           this.login(obj.id, obj.name, obj.token);
+          console.log(obj);
         } else {
           this.logout();
         }
@@ -43,6 +45,7 @@ export default class App extends React.Component {
       return (
         <View>
           <Text>Loading...</Text>
+          <Text>I am still loading</Text>
         </View>
       );
     }
