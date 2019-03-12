@@ -20,6 +20,7 @@ export default class App extends React.Component {
       jwt: token,
       loading: false
     });
+    // console.log(this.state);
   };
 
   logout = async () => {
@@ -32,7 +33,6 @@ export default class App extends React.Component {
         const obj = JSON.parse(session);
         if (obj.exp > Math.floor(new Date().getTime() / 1000)) {
           this.login(obj.id, obj.name, obj.token);
-          console.log(obj);
         } else {
           this.logout();
         }
