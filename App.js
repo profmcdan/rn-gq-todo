@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, AsyncStorage } from "react-native";
+import Main from "./src/app/Main";
 
 export default class App extends React.Component {
   state = {
@@ -37,7 +38,7 @@ export default class App extends React.Component {
     });
   }
   render() {
-    const { isLoggedIn, userId, username, loading } = this.state;
+    const { isLoggedIn, userId, username, loading, jwt } = this.state;
     if (loading) {
       return (
         <View>
@@ -47,9 +48,12 @@ export default class App extends React.Component {
     }
     if (isLoggedIn) {
       return (
-        <View style={styles.container}>
-          <Text>Hello {username}</Text>
-        </View>
+        <Main
+          userId={userId}
+          username={username}
+          token={jwt}
+          logout={this.logout}
+        />
       );
     } else {
       return <Auth login={this.login} />;
